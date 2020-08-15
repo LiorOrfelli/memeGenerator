@@ -1,0 +1,180 @@
+body{
+    background-color: orange;
+}
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+/* Navbar links */
+.navbar a {
+  float: right;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+  background-color: #000;
+}
+
+/* Current/active navbar link */
+.active {
+  background-color: #4CAF50;
+}
+
+/* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+* {
+    box-sizing: border-box;
+  }
+  div{
+    text-align: center;
+    align-items: center;
+    display: block;
+    margin-right: 0px;
+  }
+  
+  /* Container for flexboxes */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Create four equal columns */
+  .column {
+    flex: 25%;
+    padding: 20px;
+  }
+  
+  /* On screens that are 992px wide or less, go from four columns to two columns */
+  @media screen and (max-width: 992px) {
+    .column {
+      flex: 50%;
+    }
+  }
+  
+  /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+  }
+
+  
+  .button1 {
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+    background-color:#7892c2;
+    border-radius:10px;
+    border:1px solid #4e6096;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font: size 10px;;
+    padding:2px 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #283966;
+  }
+  .button1:hover {
+    background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+    background-color:#476e9e;
+  }
+  .button1:active {
+    position:relative;
+    top:1px;
+  }
+  
+
+  .button2 {
+    box-shadow:inset 0px 39px 0px -24px #e67a73;
+    background-color:#e4685d;
+    border-radius:4px;
+    border:1px solid #ffffff;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    padding:6px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #b23e35;
+  }
+  .button2:hover {
+    background-color:#eb675e;
+  }
+  .button2:active {
+    position:relative;
+    top:1px;
+  }
+  
+
+  .button3 {
+    background-color:#44c767;
+    border-radius:28px;
+    border:1px solid #18ab29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+  }
+  .button3:hover {
+    background-color:#5cbf2a;
+  }
+  .button3:active {
+    position:relative;
+    top:1px;
+  }
+
+  .button4 {
+    box-shadow:inset 0px 0px 14px -3px #f2fadc;
+    background:linear-gradient(to bottom, #dbe6c4 5%, #9ba892 100%);
+    background-color:#dbe6c4;
+    border-radius:6px;
+    border:1px solid #b2b8ad;
+    display:inline-block;
+    cursor:pointer;
+    color:#757d6f;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ced9bf;
+  }
+  .button4:hover {
+    background:linear-gradient(to bottom, #9ba892 5%, #dbe6c4 100%);
+    background-color:#9ba892;
+  }
+  .button4:active {
+    position:relative;
+    top:1px;
+  }
+
+  .link:link, .link:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .link:hover, .link:active {
+    background-color: red;
+  }
