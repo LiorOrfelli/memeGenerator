@@ -48,13 +48,12 @@ body{
   /* Container for flexboxes */
   .row {
     display: flex;
-    flex-wrap: wrap;
   }
   
   /* Create four equal columns */
   .column {
     flex: 25%;
-    padding: 20px;
+    padding: 0px;
   }
   
   /* On screens that are 992px wide or less, go from four columns to two columns */
@@ -71,7 +70,9 @@ body{
     }
   }
 
-  
+  button{
+    outline-style: none;
+  }
   .button1 {
     box-shadow: 0px 0px 0px 2px #9fb4f2;
     background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);

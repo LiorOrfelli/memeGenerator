@@ -21,34 +21,33 @@
             <canvas id="canvas"></canvas>
         </div>
         <div class="column">
-            <input type="text" name="txt" value="Hello" onkeyup="onChangeText(this.value)" onkeydown="drawMemeImage()">
-            <br>
-            <button class="button1" onclick="onMoveLineUp()" onmousedown="drawMemeImage()">↥</button>
-            <button class="button1" onclick="onMoveLineDown()" onmousedown="drawMemeImage()"> ↧</button>
-            <br>
+            <input type="text" name="txt" id="txt" value="Text" onkeyup="onChangeText(this.value)">
+            <br><br>
+            <button class="button1" onclick="onMoveLineUp()" >↥ Move line up</button>
+            <button class="button1" onclick="onMoveLineDown()" > ↧ Move line down</button>
+            <br><br>
             <label for="favcolor"></label>
-            <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="onChangeColor(this.value)" onmousedown="drawMemeImage()">
-            <br>
+            <input type="color" id="favcolor" name="favcolor" value="#000000" onchange="onChangeColor(this.value)" >
+            <br><br>
             <label for="fonts"></label>
-            <select name="fonts" id="fonts" onchange="onFontChange()" onmousedown="drawMemeImage()">
+            <select name="fonts" id="fonts" onchange="onFontChange()" >
                 <option value="Impact">Impact</option>
                 <option value="Ariel">Ariel</option>
-                <option value="Sans Serif">Sans Serif</option>
+                <option value="Comic Sans MS">Comic Sans</option>
             </select>
-            <br>
-            <buttonn class="button4" onclick="onEnlargeText()" onmousedown="drawMemeImage()">A+</buttonn>
-            <buttonn class="button4" onclick="onReduceText()" onmousedown="drawMemeImage()">A-</buttonn>
-            <br>
-            <button class="button2" onclick="onRightAlign()" onmousedown="drawMemeImage()">Align to right</button>
-            <button class="button2" onclick="onCenterAlign()" onmousedown="drawMemeImage()">Align to center</button>
-            <button class="button2" onclick="onLeftAlign()" onmousedown="drawMemeImage()">Align to left</button>
-            <br>
-            <button class="button 3" onclick="onAddLine()" onmousedown="drawMemeImage()">➕</button>
-            <button class="button 3" onclick="onRemoveLine()" onmousedown="drawMemeImage()">❌</button>
-            <br>
-            <button class="button3" onclick="onSetLineUp()">⬆️</button>
-            <button class="button3" onclick="onSetLineDown()">⬇️</button>
-            <br>
+            <br><br>
+            <buttonn class="button4" onclick="onEnlargeText()" >A+</buttonn>
+            <buttonn class="button4" onclick="onReduceText()" >A-</buttonn>
+            <br><br>
+            <button class="button2" onclick="onRightAlign()">Align to right</button>
+            <button class="button2" onclick="onCenterAlign()" >Align to center</button>
+            <button class="button2" onclick="onLeftAlign()" >Align to left</button>
+            <br><br>
+            <button class="button 3" onclick="onAddLine()" >➕</button>
+            <button class="button 3" onclick="onRemoveLine()">❌</button>
+            <br><br>
+            <button class="button3" onclick="onToggleLine()">⬆️⬇️</button>
+            <br><br>
             <a id="download" class="link" download="myCanvas.jpg" href="" onclick="onDownloadCanvas(this);">Download The Canvas!</a>
 
         </div>

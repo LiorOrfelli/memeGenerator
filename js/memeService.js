@@ -1,17 +1,5 @@
 'use strict';
-////////////////////////////////////////////////////////
-//IMPORTANT NOTE
-////////////////////////////////////////////////////////
-//Just for CONVINIENCE - Let's take a case in which 3 texts were inserted
-//and for some reason - the user decides to delete them all
-//so that the canvas contains the image only
-//In this case, I decided that if the user inserts another line
-//-It will NOT be regarded as the first line, but as the 4th one, i.e. it will be placed in the MIDDLE
-//I allow myself doing so - since the lines are draggable anyway
-//So that the user can place it as it was the first text box - on the top
-//MOREOVER - this case shouldn't even happen...since the user can edit the lines
-//instead of deleting them all and then start adding lines "from the beginning".....
-///////////////////////////////////////////////////////////////////////
+
 var gInsertedLinesCounter = 1;
 
 let gImgs = [
@@ -36,7 +24,8 @@ let gImgs = [
 ];
 
 var gMeme = {
-    selectedImgId: 5, selectedLineIdx: 0,
+    selectedImgId: 5,
+    selectedLineIdx: 0,
     lines: [{
         XLinePosition: 0, YLinePosition: 20,
         txt: 'Text', size: 50, align: 'center',
@@ -80,26 +69,27 @@ function setInitialModelForRendering() {
 
 function addLine() {
     gInsertedLinesCounter++;
-/*     gMeme.selectedLineIdx = gInsertedLinesCounter;
- */
+    gMeme.selectedLineIdx++
+    /*     gMeme.selectedLineIdx = gInsertedLinesCounter;
+     */
     gMeme.lines.push({
         XLinePosition: 0, YLinePosition: 0,
         txt: 'Text', size: 50, align: 'center',
         color: 'black', font: 'IMPACT', insertionIndex: gInsertedLinesCounter
     })
-    if (gInsertedLinesCounter === 2) {
-        gMeme.lines[(gInsertedLinesCounter) - 1].XLinePosition = (gCanvas.width) / 2;
-        gMeme.lines[(gInsertedLinesCounter) - 1].YLinePosition = (gCanvas.height) / 1.2;
+    if (gMeme.selectedLineIdx === 1) {
+        gMeme.lines[gMeme.selectedLineIdx].XLinePosition = (gCanvas.width) / 2;
+        gMeme.lines[gMeme.selectedLineIdx].YLinePosition = (gCanvas.height) / 1.2;
     }
     /*          if(gInsertedLinesCounter === 1){
                 gMeme.lines[(gInsertedLinesCounter)-1].XLinePosition = (gCanvas.width)/2;
                 gMeme.lines[(gInsertedLinesCounter)-1].YLinePosition = (gCanvas.height)/9;
              } */
-    if (gInsertedLinesCounter > 2) {
-        gMeme.lines[(gInsertedLinesCounter) - 1].XLinePosition = (gCanvas.width) / 2;
-        gMeme.lines[(gInsertedLinesCounter) - 1].YLinePosition = (gCanvas.height) / 2;
+    if (gMeme.selectedLineIdx >= 2) {
+        gMeme.lines[gMeme.selectedLineIdx].XLinePosition = (gCanvas.width) / 2;
+        gMeme.lines[gMeme.selectedLineIdx].YLinePosition = (gCanvas.height) / 2;
     }
-    gMeme.selectedLineIdx = (gMeme.lines.length)-1;
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
 
@@ -123,22 +113,22 @@ function moveSelectedLineDown() {
     gMeme.selectedLineIdx = gMeme.selectedLineIdx + 1;
     //In case user click again on move line dowm button
     //but he/she is on the last line
-    if (gMeme.selectedLineIdx >= (gMeme.lines).length ){
-        gMeme.selectedLineIdx = (gMeme.lines.length)-1;
+    if (gMeme.selectedLineIdx >= (gMeme.lines).length) {
+        gMeme.selectedLineIdx = (gMeme.lines.length) - 1;
     }
 }
 
-function moveLineLower(){
-    gMeme.lines[gMeme.selectedLineIdx].YLinePosition +=5;
-    if(gMeme.lines[gMeme.selectedLineIdx].YLinePosition >= gCanvas.height){
+function moveLineLower() {
+    gMeme.lines[gMeme.selectedLineIdx].YLinePosition += 5;
+    if (gMeme.lines[gMeme.selectedLineIdx].YLinePosition >= gCanvas.height) {
         gMeme.lines[gMeme.selectedLineIdx].YLinePosition = gCanvas.height;
     }
 }
 
-function moveLineHigher(){
-    gMeme.lines[gMeme.selectedLineIdx].YLinePosition -=5;
-    if(gMeme.lines[gMeme.selectedLineIdx].YLinePosition <= 0){
-        gMeme.lines[gMeme.selectedLineIdx].YLinePosition = gCanvas.height;
+function moveLineHigher() {
+    gMeme.lines[gMeme.selectedLineIdx].YLinePosition -= 5;
+    if (gMeme.lines[gMeme.selectedLineIdx].YLinePosition <= 0) {
+        gMeme.lines[gMeme.selectedLineIdx].YLinePosition = 0;
     }
 
 }
@@ -151,37 +141,50 @@ function changeSelectedLineFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font;
 }
 
-function removeLine(){
-    gMeme.lines.splice(gMeme.selectedLineIdx,1);
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+    //Prothecting from complete deletion of any line in the canvas
     //As metioned above - The moment a line is removed
     //I decided that the selectedLineIdx will be 0
     //I.e. the first Line;
-    gMeme.selectedLineIdx = 0;
+    if (gMeme.selectedLineIdx <= 0) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx--
+    // gInsertedLinesCounter--
+    console.log('counter', gInsertedLinesCounter)
+    console.log('idx', gMeme.selectedLineIdx)
+
 }
 
 //Could have done the following 3 functions with one function
 //but for "readness" I did so
-function leftAlignLine(){
+function leftAlignLine() {
     gMeme.lines[gMeme.selectedLineIdx].align = 'left';
 }
 
-function rightAlignLine(){
+function rightAlignLine() {
     gMeme.lines[gMeme.selectedLineIdx].align = 'right';
 }
 
-function centerAlignLine(){
+function centerAlignLine() {
     gMeme.lines[gMeme.selectedLineIdx].align = 'center';
 }
 
-function reduceSelectedLine(){
-    gMeme.lines[gMeme.selectedLineIdx].size -= 2;  
+function reduceSelectedLine() {
+    gMeme.lines[gMeme.selectedLineIdx].size -= 2;
 }
 
-function enlargeSelectedLine(){
-    gMeme.lines[gMeme.selectedLineIdx].size += 2;  
+function enlargeSelectedLine() {
+    gMeme.lines[gMeme.selectedLineIdx].size += 2;
 }
 
-
+function toggleLine() {
+    if (gMeme.selectedLineIdx === ((gMeme.lines.length) - 1)) {
+        gMeme.selectedLineIdx = 0;
+    }
+    else {
+        gMeme.selectedLineIdx++;
+    }
+}
 
 
 

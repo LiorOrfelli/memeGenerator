@@ -1,12 +1,18 @@
 body{
     background-color: orange;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
 
-    
+section{
+  align-items: center;
+  text-align: center;
 }
 img {
     object-fit: cover;
-    width: 320px;
-    height: 320px;
+    width: 200px;
+    height: 200px;
   }
   .navbar {
     width: 100%;
