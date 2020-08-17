@@ -158,11 +158,11 @@ function removeLine() {
 //Could have done the following 3 functions with one function
 //but for "readness" I did so
 function leftAlignLine() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
 }
 
 function rightAlignLine() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left';
 }
 
 function centerAlignLine() {
